@@ -17,42 +17,13 @@
         body{font-family:'Rajdhani',sans-serif;background:var(--bg);color:var(--text)}
         body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(rgba(0,229,255,.025) 1px,transparent 1px);background-size:24px 24px;pointer-events:none;z-index:0}
         .fo{font-family:'Orbitron',monospace}
-
-        /* === GRID: barra siempre fija === */
-        .launcher{
-            display:flex;flex-direction:column;
-            height:100vh;width:100vw;
-            padding:4px;gap:4px;
-            position:relative;z-index:1;
-        }
-        .main-area{
-            flex:1;display:grid;gap:4px;min-height:0;
-        }
-        @media(orientation:landscape){
-            .main-area{grid-template-columns:1.5fr 1.3fr 1.1fr;grid-template-rows:1.2fr 1fr}
-            .z-map{grid-column:1/3;grid-row:1}
-            .z-info{grid-column:3;grid-row:1}
-            .z-mus{grid-column:1/3;grid-row:2}
-            .z-spd{grid-column:3;grid-row:2}
-        }
-        @media(orientation:portrait){
-            .main-area{grid-template-columns:1fr;grid-template-rows:1fr .85fr .8fr}
-            .z-map{grid-column:1;grid-row:1}
-            .z-info{display:none!important}
-            .z-mus{grid-column:1;grid-row:2}
-            .z-spd{grid-column:1;grid-row:3}
-        }
-        /* Barra SIEMPRE visible, sin flex */
-        .z-bar{
-            flex-shrink:0;
-            display:flex;align-items:center;justify-content:center;
-            gap:4px;padding:3px 4px;
-        }
-
+        .launcher{display:flex;flex-direction:column;height:100vh;width:100vw;padding:4px;gap:4px;position:relative;z-index:1}
+        .main-area{flex:1;display:grid;gap:4px;min-height:0}
+        @media(orientation:landscape){.main-area{grid-template-columns:1.5fr 1.3fr 1.1fr;grid-template-rows:1.2fr 1fr}.z-map{grid-column:1/3;grid-row:1}.z-info{grid-column:3;grid-row:1}.z-mus{grid-column:1/3;grid-row:2}.z-spd{grid-column:3;grid-row:2}}
+        @media(orientation:portrait){.main-area{grid-template-columns:1fr;grid-template-rows:1fr .85fr .8fr}.z-map{grid-column:1;grid-row:1}.z-info{display:none!important}.z-mus{grid-column:1;grid-row:2}.z-spd{grid-column:1;grid-row:3}}
+        .z-bar{flex-shrink:0;display:flex;align-items:center;justify-content:center;gap:4px;padding:3px 4px}
         .card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;position:relative;backdrop-filter:blur(16px)}
         #map{width:100%;height:100%;z-index:1}
-
-        /* Mapa */
         .map-s{position:absolute;top:6px;left:6px;right:48px;z-index:1000;display:flex;gap:4px}
         .map-s input{flex:1;background:rgba(6,10,19,.93);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-family:'Rajdhani',sans-serif;font-size:14px;outline:none}
         .map-s input:focus{border-color:var(--accent);box-shadow:0 0 14px var(--glow)}
@@ -66,8 +37,6 @@
         .sri{padding:9px 12px;cursor:pointer;border-bottom:1px solid var(--border);font-size:13px;font-weight:500}
         .sri:last-child{border-bottom:none}.sri:active{background:var(--glow)}
         .sri small{display:block;color:var(--muted);font-size:10px;font-weight:400;margin-top:1px}
-
-        /* Banner navegación */
         .nav-b{position:absolute;bottom:8px;left:8px;right:48px;z-index:1000;background:rgba(6,10,19,.95);border:1px solid var(--accent);border-radius:10px;padding:8px 12px;display:none;box-shadow:0 0 18px var(--glow)}
         .nav-b.on{display:block}
         .nb-t{display:flex;align-items:center;gap:10px}
@@ -79,18 +48,11 @@
         .nb-m{display:flex;align-items:center;gap:12px;margin-top:4px;font-size:12px;font-weight:600;color:var(--muted)}
         .nb-m .ds{color:var(--accent);font-size:14px}
         .nb-x{position:absolute;top:4px;right:6px;background:none;border:none;color:var(--danger);cursor:pointer;font-size:14px;padding:2px}
-
         .p-info{display:none;position:absolute;bottom:8px;right:8px;z-index:1000;background:rgba(6,10,19,.88);border:1px solid var(--border);border-radius:6px;padding:4px 10px;text-align:right}
         @media(orientation:portrait){.p-info{display:block}}
-
-        /* Info */
         .z-info{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:8px}
-
-        /* Velocímetro */
         .z-spd{display:flex;align-items:center;justify-content:center}
         #speedCanvas{max-width:100%;max-height:100%}
-
-        /* Música */
         .z-mus{display:flex;flex-direction:column;padding:8px 14px}
         .mb{background:none;border:1px solid var(--border);color:var(--text);width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all .2s;flex-shrink:0}
         .mb:active,.mb:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 0 8px var(--glow)}
@@ -105,24 +67,26 @@
         .sbn:active{transform:scale(.95)}
         .vs{-webkit-appearance:none;appearance:none;width:60px;height:3px;background:rgba(255,255,255,.08);border-radius:2px;outline:none}
         .vs::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:12px;height:12px;border-radius:50%;background:var(--accent);cursor:pointer}
-
-        /* Botones de acción - compactos */
-        .ab{
-            background:var(--card);border:1px solid var(--border);color:var(--muted);
-            width:56px;height:42px;border-radius:10px;
-            cursor:pointer;display:flex;flex-direction:column;
-            align-items:center;justify-content:center;gap:1px;
-            font-size:16px;transition:all .15s;flex-shrink:0;
-        }
+        .ab{background:var(--card);border:1px solid var(--border);color:var(--muted);width:56px;height:42px;border-radius:10px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;font-size:16px;transition:all .15s;flex-shrink:0}
         .ab span{font-size:8px;font-family:'Rajdhani',sans-serif;font-weight:600}
         .ab:active{border-color:var(--accent);color:var(--accent);box-shadow:0 0 12px var(--glow);transform:scale(.92)}
-
         .toast{position:fixed;bottom:56px;left:50%;transform:translateX(-50%) translateY(14px);background:#0c1423;border:1px solid var(--border);color:var(--text);padding:8px 20px;border-radius:8px;font-size:13px;font-weight:500;opacity:0;transition:all .3s;z-index:9999;pointer-events:none;white-space:nowrap}
         .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
         .leaflet-control-zoom,.leaflet-control-attribution{display:none!important}
+
+        /* Overlay de escaneo */
+        .scan-overlay{position:fixed;inset:0;background:rgba(6,10,19,.92);z-index:10000;display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;backdrop-filter:blur(10px)}
+        .scan-overlay.on{display:flex}
+        .scan-ico{width:60px;height:60px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        .scan-prog{width:240px;height:4px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
+        .scan-prog-fill{height:100%;background:var(--accent);border-radius:2px;width:0%;transition:width .3s}
+
+        /* Caché info */
+        .cache-tag{font-size:10px;color:var(--green);display:inline-flex;align-items:center;gap:3px}
+
         @keyframes gpsP{0%{box-shadow:0 0 0 0 rgba(0,229,255,.5)}70%{box-shadow:0 0 0 8px rgba(0,229,255,0)}100%{box-shadow:0 0 0 0 rgba(0,229,255,0)}}
         .gps-on{animation:gpsP 2s ease-out infinite}
-        /* GPS cargando */
         @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
         .gps-wait{animation:blink 1.5s ease-in-out infinite}
         @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
@@ -130,9 +94,16 @@
 </head>
 <body>
 
+<!-- Overlay de escaneo -->
+<div class="scan-overlay" id="scanOv">
+    <div class="scan-ico"></div>
+    <div class="fo text-lg font-bold" id="scanTxt" style="color:var(--accent)">Escaneando música...</div>
+    <div class="scan-prog"><div class="scan-prog-fill" id="scanProg"></div></div>
+    <div class="text-sm" style="color:var(--muted)" id="scanCount">0 archivos encontrados</div>
+</div>
+
 <div class="launcher">
     <div class="main-area">
-        <!-- MAPA -->
         <section class="z-map card" aria-label="Navegación GPS">
             <div class="map-s">
                 <input type="text" id="sIn" placeholder="Buscar destino..." aria-label="Buscar destino">
@@ -143,44 +114,34 @@
             <div id="map"></div>
             <div class="nav-b" id="navB">
                 <button class="nb-x" id="navX" aria-label="Cerrar"><i class="fas fa-xmark"></i></button>
-                <div class="nb-t">
-                    <div class="nb-i" id="nbI"><i class="fas fa-arrow-up"></i></div>
-                    <div><div class="nb-d" id="nbD">Calculando...</div><div class="nb-s" id="nbS"></div></div>
-                </div>
-                <div class="nb-m">
-                    <span class="ds" id="nbDs">--</span>
-                    <span id="nbEt">Llegada: --</span>
-                    <span><i class="fas fa-route" style="color:var(--accent);margin-right:3px"></i><span id="nbTt">--</span></span>
-                </div>
+                <div class="nb-t"><div class="nb-i" id="nbI"><i class="fas fa-arrow-up"></i></div><div><div class="nb-d" id="nbD">Calculando...</div><div class="nb-s" id="nbS"></div></div></div>
+                <div class="nb-m"><span class="ds" id="nbDs">--</span><span id="nbEt">Llegada: --</span><span><i class="fas fa-route" style="color:var(--accent);margin-right:3px"></i><span id="nbTt">--</span></span></div>
             </div>
-            <div class="p-info">
-                <div class="fo text-base font-bold" id="pCl" style="color:var(--accent)">00:00</div>
-                <div class="text-xs font-semibold" id="pTm" style="color:var(--muted)">--°C</div>
-            </div>
+            <div class="p-info"><div class="fo text-base font-bold" id="pCl" style="color:var(--accent)">00:00</div><div class="text-xs font-semibold" id="pTm" style="color:var(--muted)">--°C</div></div>
         </section>
 
-        <!-- INFO -->
         <section class="z-info card" aria-label="Información">
             <div class="fo text-3xl font-bold" id="clock" style="color:var(--accent);letter-spacing:2px">00:00</div>
             <div class="text-xs font-semibold" id="dateS" style="color:var(--muted)">--</div>
             <div style="height:6px"></div>
             <div class="flex items-center gap-2"><i class="fas fa-temperature-half text-sm" style="color:var(--warm)"></i><span class="text-lg font-bold" id="temp">--°C</span></div>
             <div style="height:4px"></div>
-            <div class="flex items-center gap-2">
-                <div id="gpsD" style="width:7px;height:7px;border-radius:50%;background:var(--muted)" class="gps-wait"></div>
-                <span class="text-xs font-semibold" style="color:var(--muted)" id="gpsL">Obteniendo GPS...</span>
-            </div>
+            <div class="flex items-center gap-2"><div id="gpsD" style="width:7px;height:7px;border-radius:50%;background:var(--muted)" class="gps-wait"></div><span class="text-xs font-semibold" style="color:var(--muted)" id="gpsL">Obteniendo GPS...</span></div>
         </section>
 
-        <!-- MÚSICA -->
         <section class="z-mus card" aria-label="Música">
             <div id="scanV" class="flex flex-col items-center justify-center h-full gap-3">
                 <i class="fas fa-music text-3xl" style="color:var(--accent);opacity:.5"></i>
-                <p class="text-xs" style="color:var(--muted)">Selecciona tus archivos de música</p>
+                <p class="text-xs" style="color:var(--muted)">Escanea tu carpeta de música</p>
                 <button class="sbn" id="scanB"><i class="fas fa-folder-open"></i>&nbsp; Escanear Música</button>
+                <button id="addManual" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:11px;font-family:'Rajdhani',sans-serif;font-weight:600;margin-top:-4px"><i class="fas fa-file-audio"></i> Seleccionar archivos manualmente</button>
             </div>
             <div id="playV" class="hidden flex flex-col h-full">
-                <div class="flex items-center gap-2 mb-1"><i class="fas fa-music text-xs" style="color:var(--accent)"></i><span class="text-xs font-semibold truncate" id="tNm" style="color:var(--muted)">--</span></div>
+                <div class="flex items-center gap-2 mb-1">
+                    <i class="fas fa-music text-xs" style="color:var(--accent)"></i>
+                    <span class="text-xs font-semibold truncate" id="tNm" style="color:var(--muted);flex:1">--</span>
+                    <span class="cache-tag" id="cacheTag"><i class="fas fa-database"></i> <span id="cacheN">0</span></span>
+                </div>
                 <div class="pb" id="pBar"><div class="pf" id="pFl"></div></div>
                 <div class="flex justify-between text-xs mt-1" style="color:var(--muted)"><span id="cuT">0:00</span><span id="toT">0:00</span></div>
                 <div class="flex items-center justify-center gap-3 mt-auto mb-1">
@@ -193,17 +154,18 @@
                 <div class="flex items-center gap-2 justify-center"><i class="fas fa-volume-low" style="color:var(--muted);font-size:10px"></i><input type="range" class="vs" id="volS" min="0" max="100" value="80" aria-label="Volumen"><i class="fas fa-volume-high" style="color:var(--muted);font-size:10px"></i></div>
                 <div class="flex items-center justify-between mt-1">
                     <button id="togPL" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:11px;font-family:'Rajdhani',sans-serif;font-weight:600"><i class="fas fa-list"></i> Playlist (<span id="tCn">0</span>)</button>
-                    <button id="addM" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:11px;font-family:'Rajdhani',sans-serif;font-weight:600"><i class="fas fa-plus"></i> Agregar</button>
+                    <div class="flex items-center gap-3">
+                        <button id="addM" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:11px;font-family:'Rajdhani',sans-serif;font-weight:600"><i class="fas fa-plus"></i> Agregar</button>
+                        <button id="clrCache" style="background:none;border:none;color:var(--danger);cursor:pointer;font-size:11px;font-family:'Rajdhani',sans-serif;font-weight:600;opacity:.6"><i class="fas fa-trash"></i></button>
+                    </div>
                 </div>
                 <div class="pll hidden" id="plL"></div>
             </div>
         </section>
 
-        <!-- VELOCÍMETRO -->
         <section class="z-spd card" aria-label="Velocímetro"><canvas id="speedCanvas" aria-live="polite"></canvas></section>
     </div>
 
-    <!-- BARRA DE ACCIONES - fuera del grid flex, siempre visible -->
     <nav class="z-bar" aria-label="Acciones">
         <button class="ab" id="aNav"><i class="fas fa-location-arrow"></i><span>Navegar</span></button>
         <button class="ab" id="aMus"><i class="fas fa-headphones"></i><span>Música</span></button>
@@ -214,12 +176,187 @@
 </div>
 
 <input type="file" id="fIn" accept="audio/*" multiple style="display:none">
+<input type="file" id="fDir" accept="audio/*" webkitdirectory directory style="display:none">
 <div class="toast" id="toast"></div>
 
 <script>
-/* ========== ESTADO ========== */
+/* ============================================================
+   BASE DE DATOS INDEXEDDB - Persistencia de música
+   ============================================================ */
+const DB_NAME='DriveLaunchMusic',DB_VER=1,ST_NAME='tracks';
+
+function openDB(){
+    return new Promise((res,rej)=>{
+        const r=indexedDB.open(DB_NAME,DB_VER);
+        r.onupgradeneeded=e=>{const db=e.target.result;if(!db.objectStoreNames.contains(ST_NAME))db.createObjectStore(ST_NAME,{keyPath:'id'})};
+        r.onsuccess=e=>res(e.target.result);
+        r.onerror=e=>rej(e.target.error);
+    });
+}
+
+/* Guardar una canción como Blob en IndexedDB */
+async function saveTrack(id,name,blob,type){
+    const db=await openDB();
+    return new Promise((res,rej)=>{
+        const tx=db.transaction(ST_NAME,'readwrite');
+        tx.objectStore(ST_NAME).put({id,name,blob,type});
+        tx.oncomplete=res;tx.onerror=e=>rej(e.target.error);
+    });
+}
+
+/* Cargar todas las canciones de IndexedDB */
+async function loadAllTracks(){
+    const db=await openDB();
+    return new Promise((res,rej)=>{
+        const tx=db.transaction(ST_NAME,'readonly');
+        const r=tx.objectStore(ST_NAME).getAll();
+        r.onsuccess=()=>res(r.result);r.onerror=e=>rej(e.target.error);
+    });
+}
+
+/* Borrar una canción */
+async function deleteTrack(id){
+    const db=await openDB();
+    return new Promise((res,rej)=>{
+        const tx=db.transaction(ST_NAME,'readwrite');
+        tx.objectStore(ST_NAME).delete(id);
+        tx.oncomplete=res;tx.onerror=e=>rej(e.target.error);
+    });
+}
+
+/* Borrar toda la caché */
+async function clearAllTracks(){
+    const db=await openDB();
+    return new Promise((res,rej)=>{
+        const tx=db.transaction(ST_NAME,'readwrite');
+        tx.objectStore(ST_NAME).clear();
+        tx.oncomplete=res;tx.onerror=e=>rej(e.target.error);
+    });
+}
+
+/* ============================================================
+   ESCANEO DE CARPETAS - File System Access API
+   ============================================================ */
+
+/* Escaneo recursivo de directorios con showDirectoryPicker */
+async function scanDirRecursive(dirHandle){
+    const files=[];
+    for await(const entry of dirHandle.values()){
+        if(entry.kind==='file'){
+            try{
+                const file=await entry.getFile();
+                if(file.type.startsWith('audio/')||/\.(mp3|wav|ogg|flac|aac|m4a|wma|opus|webm)$/i.test(file.name)){
+                    files.push(file);
+                }
+            }catch(e){/* archivo inaccesible, saltar */}
+        }else if(entry.kind==='directory'){
+            try{const sub=await scanDirRecursive(entry);files.push(...sub)}catch(e){/* carpeta inaccesible, saltar */}
+        }
+    }
+    return files;
+}
+
+/* Procesar archivos encontrados: guardar en IndexedDB y en playlist */
+async function processFiles(files,progCb){
+    let count=0;
+    const existing=new Set(pl.map(t=>t.id));
+    for(const file of files){
+        /* Generar ID único basado en nombre + tamaño */
+        const id=file.name+'__'+file.size;
+        if(existing.has(id)){count++;if(progCb)progCb(count,files.length,file.name);continue}
+        try{
+            /* Leer el archivo como ArrayBuffer y guardarlo */
+            const buf=await file.arrayBuffer();
+            const blob=new Blob([buf],{type:file.type||'audio/mpeg'});
+            const name=file.name.replace(/\.[^/.]+$/,'');
+            await saveTrack(id,name,blob,file.type||'audio/mpeg');
+            const url=URL.createObjectURL(blob);
+            pl.push({id,name,url,blob});
+            existing.add(id);
+        }catch(e){console.warn('Error guardando:',file.name,e)}
+        count++;
+        if(progCb)progCb(count,files.length,file.name);
+    }
+}
+
+/* Función principal de escaneo */
+async function doScan(){
+    const ov=document.getElementById('scanOv');
+    const txt=document.getElementById('scanTxt');
+    const prog=document.getElementById('scanProg');
+    const cnt=document.getElementById('scanCount');
+    ov.classList.add('on');
+    txt.textContent='Selecciona tu carpeta de música...';
+    prog.style.width='0%';cnt.textContent='0 archivos encontrados';
+
+    let files=[];
+
+    /* Método 1: File System Access API (mejor, recursivo) */
+    if(window.showDirectoryPicker){
+        try{
+            txt.textContent='Selecciona tu carpeta de música...';
+            const dirHandle=await window.showDirectoryPicker({mode:'read'});
+            txt.textContent='Escaneando carpetas...';
+            files=await scanDirRecursive(dirHandle);
+            cnt.textContent=files.length+' archivos de audio encontrados';
+        }catch(e){
+            if(e.name!=='AbortError')console.warn('showDirectoryPicker falló:',e);
+            ov.classList.remove('on');
+            return;
+        }
+    }
+
+    /* Método 2: webkitdirectory fallback */
+    if(!files.length){
+        try{
+            ov.classList.remove('on');
+            const dirInput=document.getElementById('fDir');
+            const dirFiles=await new Promise((res,rej)=>{
+                dirInput.onchange=e=>res(Array.from(e.target.files));
+                dirInput.onclick=rej;
+                dirInput.click();
+                /* Timeout por si no selecciona nada */
+                setTimeout(()=>rej('timeout'),120000);
+            });
+            files=dirFiles.filter(f=>f.type.startsWith('audio/')||/\.(mp3|wav|ogg|flac|aac|m4a|wma|opus|webm)$/i.test(f.name));
+            ov.classList.add('on');
+            txt.textContent='Procesando archivos...';
+            cnt.textContent=files.length+' archivos de audio encontrados';
+        }catch(e){
+            if(e==='timeout'||e.name==='AbortError'){ov.classList.remove('on');return}
+            console.warn('webkitdirectory falló:',e);
+        }
+    }
+
+    if(!files.length){ov.classList.remove('on');toast('No se encontraron archivos de audio');return}
+
+    /* Guardar en IndexedDB */
+    txt.textContent='Guardando en memoria...';
+    await processFiles(files,(done,total,name)=>{
+        const pct=Math.round(done/total*100);
+        prog.style.width=pct+'%';
+        cnt.textContent=done+'/'+total+' — '+name;
+    });
+
+    ov.classList.remove('on');
+
+    if(pl.length>0){
+        document.getElementById('scanV').classList.add('hidden');
+        document.getElementById('playV').classList.remove('hidden');
+        buildPL();
+        updateCacheTag();
+        toast(pl.length+' canciones listas');
+        if(cTrk===-1)loadTrk(0);
+    }else{
+        toast('No se pudieron guardar las canciones');
+    }
+}
+
+/* ============================================================
+   ESTADO GLOBAL
+   ============================================================ */
 let map,tileL,uMk,accC,rLayers=[],dMk;
-let uLat=null,uLon=null; // SIN posición por defecto
+let uLat=null,uLon=null;
 let gSpd=0,dSpd=0;const MX=260;
 let hasG=false,foll=true,mapInit=false;
 let pl=[],cTrk=-1,playing=false,shOn=false,rpM=0;
@@ -231,18 +368,25 @@ let navActive=false,routeCoords=[],routeSteps=[],routeTotalDist=0,routeTotalDur=
 let passedLayer=null,nearestIdx=0,offRC=0,destLat=null,destLon=null,recalc=false;
 const OFF_LIM=3,OFF_TH=50,APP_D=200;
 
-/* ========== UTILS ========== */
+/* ============================================================
+   UTILS
+   ============================================================ */
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),2800)}
 function fmtT(s){if(!s||isNaN(s))return'0:00';return Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0')}
 function fmtD(m){return m<1000?Math.round(m)+' m':(m/1000).toFixed(1)+' km'}
 function fmtDr(s){if(s<60)return Math.round(s)+' seg';if(s<3600)return Math.round(s/60)+' min';return Math.floor(s/3600)+'h '+Math.round((s%3600)/60)+'min'}
 function hav(la1,lo1,la2,lo2){const R=6371000,tr=a=>a*Math.PI/180;const dLa=tr(la2-la1),dLo=tr(lo2-lo1);const a=Math.sin(dLa/2)**2+Math.cos(tr(la1))*Math.cos(tr(la2))*Math.sin(dLo/2)**2;return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a))}
+function updateCacheTag(){document.getElementById('cacheN').textContent=pl.length;document.getElementById('tCn').textContent=pl.length}
 
-/* ========== RELOJ ========== */
+/* ============================================================
+   RELOJ
+   ============================================================ */
 function tick(){const n=new Date();const t=n.toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit',hour12:false});const d=n.toLocaleDateString('es-MX',{weekday:'short',day:'numeric',month:'short'});document.getElementById('clock').textContent=t;document.getElementById('pCl').textContent=t;document.getElementById('dateS').textContent=d}
 setInterval(tick,1000);tick();
 
-/* ========== VELOCÍMETRO ========== */
+/* ============================================================
+   VELOCÍMETRO
+   ============================================================ */
 const sC=document.getElementById('speedCanvas'),sX=sC.getContext('2d');
 function sizeS(){const s=document.querySelector('.z-spd');const z=Math.max(Math.min(s.clientWidth,s.clientHeight)-8,80);const dp=window.devicePixelRatio||1;sC.width=z*dp;sC.height=z*dp;sC.style.width=z+'px';sC.style.height=z+'px';sX.setTransform(dp,0,0,dp,0,0)}
 function drawS(){
@@ -262,62 +406,52 @@ function drawS(){
 }
 function animS(){dSpd+=(gSpd-dSpd)*.07;if(Math.abs(dSpd-gSpd)<.12)dSpd=gSpd;drawS();requestAnimationFrame(animS)}
 
-/* ========== GPS ========== */
+/* ============================================================
+   GPS
+   ============================================================ */
 function initGPS(){
-    if(!navigator.geolocation){toast('GPS no disponible en este dispositivo');document.getElementById('gpsL').textContent='GPS no disponible';return}
+    if(!navigator.geolocation){toast('GPS no disponible');document.getElementById('gpsL').textContent='GPS no disponible';return}
     document.getElementById('gpsL').textContent='Obteniendo GPS...';
     navigator.geolocation.watchPosition(p=>{
-        const firstFix=!hasG;
-        hasG=true;uLat=p.coords.latitude;uLon=p.coords.longitude;
+        const first=!hasG;hasG=true;uLat=p.coords.latitude;uLon=p.coords.longitude;
         if(p.coords.speed!==null&&p.coords.speed>=0)gSpd=p.coords.speed*3.6;
-        /* Primera vez: crear marcador y centrar mapa */
-        if(firstFix){
-            if(uMk)map.removeLayer(uMk);
-            if(accC)map.removeLayer(accC);
+        if(first){
+            if(uMk)map.removeLayer(uMk);if(accC)map.removeLayer(accC);
             const ic=L.divIcon({html:'<div style="width:14px;height:14px;background:#00e5ff;border-radius:50%;border:3px solid rgba(0,229,255,.25);box-shadow:0 0 12px rgba(0,229,255,.5)"></div>',iconSize:[14,14],iconAnchor:[7,7],className:''});
             uMk=L.marker([uLat,uLon],{icon:ic}).addTo(map);
             accC=L.circle([uLat,uLon],{radius:50,fillColor:'#00e5ff',fillOpacity:.05,color:'#00e5ff',weight:1,opacity:.15}).addTo(map);
-            map.setView([uLat,uLon],15,{animate:true});
-            mapInit=true;
-            toast('GPS obtenido');
-        } else {
-            if(uMk){uMk.setLatLng([uLat,uLon]);accC.setLatLng([uLat,uLon]);accC.setRadius(p.coords.accuracy||50)}
-        }
-        document.getElementById('gpsD').style.background='#00e5ff';
-        document.getElementById('gpsD').classList.remove('gps-wait');
-        document.getElementById('gpsD').classList.add('gps-on');
-        document.getElementById('gpsL').textContent='GPS Activo';
-        fetchTmp(uLat,uLon);
-        if(navActive)checkPos();
-        else if(foll&&mapInit)map.panTo([uLat,uLon],{animate:true,duration:.5});
-    },e=>{
-        console.warn('GPS:',e.message);
-        if(e.code===1){document.getElementById('gpsL').textContent='GPS bloqueado';document.getElementById('gpsD').classList.remove('gps-wait');document.getElementById('gpsD').style.background='var(--danger)'}
-    },{enableHighAccuracy:true,maximumAge:1000,timeout:15000});
+            map.setView([uLat,uLon],15,{animate:true});mapInit=true;toast('GPS obtenido');
+        }else{if(uMk){uMk.setLatLng([uLat,uLon]);accC.setLatLng([uLat,uLon]);accC.setRadius(p.coords.accuracy||50)}}
+        document.getElementById('gpsD').style.background='#00e5ff';document.getElementById('gpsD').classList.remove('gps-wait');document.getElementById('gpsD').classList.add('gps-on');document.getElementById('gpsL').textContent='GPS Activo';
+        fetchTmp(uLat,uLon);if(navActive)checkPos();else if(foll&&mapInit)map.panTo([uLat,uLon],{animate:true,duration:.5});
+    },e=>{console.warn('GPS:',e.message);if(e.code===1){document.getElementById('gpsL').textContent='GPS bloqueado';document.getElementById('gpsD').classList.remove('gps-wait');document.getElementById('gpsD').style.background='var(--danger)'}},{enableHighAccuracy:true,maximumAge:1000,timeout:15000});
 }
 
-/* ========== TEMPERATURA ========== */
+/* ============================================================
+   TEMPERATURA
+   ============================================================ */
 async function fetchTmp(la,lo){const n=Date.now();if(n-lastTT<300000)return;lastTT=n;try{const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${la}&longitude=${lo}&current_weather=true`);const d=await r.json();const t=d.current_weather?.temperature;if(t!==undefined){document.getElementById('temp').textContent=Math.round(t)+'°C';document.getElementById('pTm').textContent=Math.round(t)+'°C'}}catch(e){}}
 
-/* ========== MAPA ========== */
+/* ============================================================
+   MAPA
+   ============================================================ */
 function setTiles(){if(tileL)map.removeLayer(tileL);tileL=L.tileLayer(dk?'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png':'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:19}).addTo(map)}
 function initMap(){
-    /* Mapa sin centro hasta tener GPS - vista mundial */
-    map=L.map('map',{center:[0,0],zoom:2,zoomControl:false,attributionControl:false});
-    setTiles();
-    document.getElementById('locB').onclick=()=>{if(hasG){foll=true;map.flyTo([uLat,uLon],15,{duration:.8})}else{toast('Esperando señal GPS...')}};
+    map=L.map('map',{center:[0,0],zoom:2,zoomControl:false,attributionControl:false});setTiles();
+    document.getElementById('locB').onclick=()=>{if(hasG){foll=true;map.flyTo([uLat,uLon],15,{duration:.8})}else toast('Esperando señal GPS...')};
     document.getElementById('sBtn').onclick=doSearch;
     document.getElementById('sIn').onkeydown=e=>{if(e.key==='Enter')doSearch()};
     document.getElementById('sIn').oninput=e=>{clearTimeout(sTmr);sTmr=setTimeout(()=>liveSearch(e.target.value),400)};
     document.getElementById('navX').onclick=stopNav;
-    map.on('click',()=>{document.getElementById('sRes').classList.remove('open')});
+    map.on('click',()=>document.getElementById('sRes').classList.remove('open'));
     setTimeout(()=>map.invalidateSize(),300);
 }
 
-/* ========== BÚSQUEDA ========== */
+/* ============================================================
+   BÚSQUEDA
+   ============================================================ */
 async function liveSearch(q){
     const box=document.getElementById('sRes');if(!q.trim()){box.classList.remove('open');box.innerHTML='';return}
-    const cen=uLat!==null?`${uLat},${uLon}`:'-16.4090,-71.5375';
     try{const r=await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(q)}&limit=5&accept-language=es`+(uLat?`&viewbox=${uLon-.3},${uLat+.3},${uLon+.3},${uLat-.3}`:''));const d=await r.json();if(!d.length){box.innerHTML='<div style="padding:10px 12px;color:var(--muted);font-size:12px">Sin resultados</div>';box.classList.add('open');return}box.innerHTML='';d.forEach(item=>{const dv=document.createElement('div');dv.className='sri';dv.innerHTML=item.display_name.split(',').slice(0,3).join(', ')+'<small>'+item.display_name+'</small>';dv.onclick=()=>{pickDest(item);box.classList.remove('open');document.getElementById('sIn').value=item.display_name.split(',').slice(0,3).join(',')};box.appendChild(dv)});box.classList.add('open')}catch(e){box.classList.remove('open')}
 }
 async function doSearch(){
@@ -331,44 +465,30 @@ async function pickDest(item){
     destLat=+item.lat;destLon=+item.lon;
     if(dMk)map.removeLayer(dMk);
     dMk=L.marker([destLat,destLon],{icon:L.divIcon({html:'<div style="width:18px;height:18px;background:#ff6b35;border-radius:50%;border:3px solid rgba(255,107,53,.3);box-shadow:0 0 12px rgba(255,107,53,.5)"></div>',iconSize:[18,18],iconAnchor:[9,9],className:''})}).addTo(map);
-    toast('Calculando ruta...');
-    await traceRoute(uLat,uLon,destLat,destLon);
+    toast('Calculando ruta...');await traceRoute(uLat,uLon,destLat,destLon);
 }
 
-/* ========== RUTEO ========== */
+/* ============================================================
+   RUTEO
+   ============================================================ */
 async function traceRoute(fLa,fLo,tLa,tLo){
     clearRoute();
-    const srvs=[
-        {n:'OSRM DE',u:`https://routing.openstreetmap.de/routed-car/route/v1/driving/${fLo},${fLa};${tLo},${tLa}`},
-        {n:'OSRM Demo',u:`https://router.project-osrm.org/route/v1/driving/${fLo},${fLa};${tLo},${tLa}`},
-        {n:'OSRM Bike',u:`https://routing.openstreetmap.de/routed-bike/route/v1/driving/${fLo},${fLa};${tLo},${tLa}`}
-    ];
-    for(const s of srvs){
-        try{const r=await fetch(s.u+'?overview=full&geometries=geojson&steps=true&alternatives=0',{signal:AbortSignal.timeout(8000)});const d=await r.json();if(d.code==='Ok'&&d.routes&&d.routes.length>0){applyRoute(d.routes[0]);toast('Ruta via '+s.n);return}}catch(e){console.warn(s.n+' falló')}
-    }
-    /* Fallback recto */
-    const sc=[[fLa,fLo],[tLa,tLo]];
-    const sh=L.polyline(sc,{color:'rgba(255,107,53,.12)',weight:10,lineCap:'round',dashArray:'10 10'}).addTo(map);
-    const ln=L.polyline(sc,{color:'#ff6b35',weight:3,lineCap:'round',dashArray:'8 8'}).addTo(map);
-    rLayers.push(sh,ln);routeCoords=sc;routeSteps=[];routeTotalDist=hav(fLa,fLo,tLa,tLo);routeTotalDur=(routeTotalDist/1000)/35*3600;
-    document.getElementById('nbDs').textContent=fmtD(routeTotalDist);document.getElementById('nbTt').textContent=fmtD(routeTotalDist);document.getElementById('nbEt').textContent='Llegada: ~'+fmtDr(routeTotalDur);
-    document.getElementById('nbD').textContent='Ruta directa (sin giros)';document.getElementById('nbI').innerHTML='<i class="fas fa-arrow-up"></i>';document.getElementById('nbI').className='nb-i w';
-    document.getElementById('navB').classList.add('on');navActive=true;nearestIdx=0;offRC=0;
-    map.fitBounds(ln.getBounds(),{padding:[40,40]});toast('Ruta directa (servidores no disponibles)');
+    const srvs=[{n:'OSRM DE',u:`https://routing.openstreetmap.de/routed-car/route/v1/driving/${fLo},${fLa};${tLo},${tLa}`},{n:'OSRM Demo',u:`https://router.project-osrm.org/route/v1/driving/${fLo},${fLa};${tLo},${tLa}`},{n:'OSRM Bike',u:`https://routing.openstreetmap.de/routed-bike/route/v1/driving/${fLo},${fLa};${tLo},${tLa}`}];
+    for(const s of srvs){try{const r=await fetch(s.u+'?overview=full&geometries=geojson&steps=true&alternatives=0',{signal:AbortSignal.timeout(8000)});const d=await r.json();if(d.code==='Ok'&&d.routes&&d.routes.length>0){applyRoute(d.routes[0]);toast('Ruta via '+s.n);return}}catch(e){console.warn(s.n+' falló')}}
+    const sc=[[fLa,fLo],[tLa,tLo]];const sh=L.polyline(sc,{color:'rgba(255,107,53,.12)',weight:10,lineCap:'round',dashArray:'10 10'}).addTo(map);const ln=L.polyline(sc,{color:'#ff6b35',weight:3,lineCap:'round',dashArray:'8 8'}).addTo(map);rLayers.push(sh,ln);routeCoords=sc;routeSteps=[];routeTotalDist=hav(fLa,fLo,tLa,tLo);routeTotalDur=(routeTotalDist/1000)/35*3600;
+    document.getElementById('nbDs').textContent=fmtD(routeTotalDist);document.getElementById('nbTt').textContent=fmtD(routeTotalDist);document.getElementById('nbEt').textContent='Llegada: ~'+fmtDr(routeTotalDur);document.getElementById('nbD').textContent='Ruta directa';document.getElementById('nbI').innerHTML='<i class="fas fa-arrow-up"></i>';document.getElementById('nbI').className='nb-i w';document.getElementById('navB').classList.add('on');navActive=true;nearestIdx=0;offRC=0;map.fitBounds(ln.getBounds(),{padding:[40,40]});toast('Ruta directa (servidores no disponibles)');
 }
 function applyRoute(rt){
-    routeCoords=rt.geometry.coordinates.map(c=>[c[1],c[0]]);routeTotalDist=rt.distance;routeTotalDur=rt.duration;
-    routeSteps=[];
+    routeCoords=rt.geometry.coordinates.map(c=>[c[1],c[0]]);routeTotalDist=rt.distance;routeTotalDur=rt.duration;routeSteps=[];
     if(rt.legs&&rt.legs[0]&&rt.legs[0].steps){rt.legs[0].steps.forEach(s=>{if(s.maneuver&&s.maneuver.type!=='depart'&&s.maneuver.type!=='arrive'){routeSteps.push({type:s.maneuver.type,modifier:s.maneuver.modifier||'',location:[s.maneuver.location[1],s.maneuver.location[0]],name:s.name||'',distance:s.distance,duration:s.duration})}})}
-    const sh=L.polyline(routeCoords,{color:'rgba(0,229,255,.12)',weight:10,lineCap:'round',lineJoin:'round'}).addTo(map);
-    const ln=L.polyline(routeCoords,{color:'#00e5ff',weight:4,lineCap:'round',lineJoin:'round'}).addTo(map);
-    rLayers.push(sh,ln);
+    const sh=L.polyline(routeCoords,{color:'rgba(0,229,255,.12)',weight:10,lineCap:'round',lineJoin:'round'}).addTo(map);const ln=L.polyline(routeCoords,{color:'#00e5ff',weight:4,lineCap:'round',lineJoin:'round'}).addTo(map);rLayers.push(sh,ln);
     passedLayer=L.polyline([],{color:'#22c55e',weight:5,lineCap:'round',lineJoin:'round',opacity:.8}).addTo(map);
-    document.getElementById('nbTt').textContent=fmtD(routeTotalDist);document.getElementById('navB').classList.add('on');
-    navActive=true;nearestIdx=0;offRC=0;foll=true;updateBanner();map.fitBounds(ln.getBounds(),{padding:[40,40]});
+    document.getElementById('nbTt').textContent=fmtD(routeTotalDist);document.getElementById('navB').classList.add('on');navActive=true;nearestIdx=0;offRC=0;foll=true;updateBanner();map.fitBounds(ln.getBounds(),{padding:[40,40]});
 }
 
-/* ========== NAVEGACIÓN ACTIVA ========== */
+/* ============================================================
+   NAVEGACIÓN ACTIVA
+   ============================================================ */
 function checkPos(){
     if(!navActive||!routeCoords.length||recalc)return;
     let minD=Infinity,minI=nearestIdx;const s0=Math.max(0,nearestIdx-2);
@@ -385,8 +505,7 @@ function checkPos(){
     updateTurn(rem);
 }
 function updateTurn(rem){
-    const iE=document.getElementById('nbI'),dE=document.getElementById('nbD'),sE=document.getElementById('nbS');
-    let ns=null,dt=0;
+    const iE=document.getElementById('nbI'),dE=document.getElementById('nbD'),sE=document.getElementById('nbS');let ns=null,dt=0;
     for(let i=nearestIdx;i<routeCoords.length-1;i++){dt+=hav(routeCoords[i][0],routeCoords[i][1],routeCoords[i+1][0],routeCoords[i+1][1]);for(const st of routeSteps){if(Math.abs(st.location[0]-routeCoords[i+1][0])<.0002&&Math.abs(st.location[1]-routeCoords[i+1][1])<.0002){ns=st;break}}if(ns)break}
     if(!ns){iE.innerHTML='<i class="fas fa-flag-checkered"></i>';iE.className='nb-i g';dE.textContent='Sigue recto al destino';sE.textContent='';return}
     const md=ns.modifier.toLowerCase(),ty=ns.type.toLowerCase();let ic='',tx='',cl='';
@@ -409,13 +528,109 @@ function clrLayers(){rLayers.forEach(l=>map.removeLayer(l));rLayers=[];if(passed
 function clearRoute(){clrLayers();if(dMk){map.removeLayer(dMk);dMk=null}document.getElementById('navB').classList.remove('on');navActive=false;routeCoords=[];routeSteps=[];nearestIdx=0;offRC=0;destLat=null;destLon=null}
 function stopNav(){clearRoute();foll=true;toast('Navegación cancelada')}
 
-/* ========== MÚSICA ========== */
-const fIn=document.getElementById('fIn');
-document.getElementById('scanB').onclick=()=>fIn.click();
-document.getElementById('addM').onclick=()=>fIn.click();
-fIn.onchange=e=>{const fs=Array.from(e.target.files).filter(f=>f.type.startsWith('audio/'));if(!fs.length){toast('No hay archivos de audio');return}fs.forEach(f=>{pl.push({name:f.name.replace(/\.[^/.]+$/,''),url:URL.createObjectURL(f),file:f})});document.getElementById('tCn').textContent=pl.length;buildPL();document.getElementById('scanV').classList.add('hidden');document.getElementById('playV').classList.remove('hidden');toast(pl.length+' canciones');if(cTrk===-1)loadTrk(0);fIn.value=''};
+/* ============================================================
+   MÚSICA - Reproductor con persistencia
+   ============================================================ */
+
+/* Cargar canciones desde IndexedDB al inicio */
+async function loadCachedMusic(){
+    try{
+        const tracks=await loadAllTracks();
+        if(!tracks.length)return;
+        /* Mostrar progreso de carga */
+        const ov=document.getElementById('scanOv');
+        ov.classList.add('on');
+        document.getElementById('scanTxt').textContent='Cargando música guardada...';
+        document.getElementById('scanProg').style.width='0%';
+        document.getElementById('scanCount').textContent='0/'+tracks.length;
+
+        for(let i=0;i<tracks.length;i++){
+            const t=tracks[i];
+            if(t.blob){
+                const url=URL.createObjectURL(t.blob);
+                pl.push({id:t.id,name:t.name,url,blob:t.blob});
+            }
+            const pct=Math.round((i+1)/tracks.length*100);
+            document.getElementById('scanProg').style.width=pct+'%';
+            document.getElementById('scanCount').textContent=(i+1)+'/'+tracks.length+' — '+t.name;
+            /* Ceder el hilo para que se actualice la UI */
+            if(i%10===0)await new Promise(r=>setTimeout(r,0));
+        }
+        ov.classList.remove('on');
+
+        if(pl.length>0){
+            document.getElementById('scanV').classList.add('hidden');
+            document.getElementById('playV').classList.remove('hidden');
+            buildPL();updateCacheTag();
+            /* Restaurar última canción reproducida */
+            const lastId=localStorage.getItem('dl_lastTrack');
+            if(lastId){
+                const idx=pl.findIndex(t=>t.id===lastId);
+                if(idx>=0)loadTrk(idx);
+                else loadTrk(0);
+            }else loadTrk(0);
+            toast(pl.length+' canciones cargadas de memoria');
+        }
+    }catch(e){console.warn('Error cargando caché:',e);document.getElementById('scanOv').classList.remove('on')}
+}
+
+/* Botones de escaneo */
+document.getElementById('scanB').onclick=doScan;
+document.getElementById('addManual').onclick=()=>document.getElementById('fIn').click();
+document.getElementById('addM').onclick=()=>document.getElementById('fIn').click();
+
+/* Input manual de archivos (fallback) */
+document.getElementById('fIn').onchange=async e=>{
+    const files=Array.from(e.target.files).filter(f=>f.type.startsWith('audio/'));
+    if(!files.length){toast('No hay archivos de audio');return}
+    /* Guardar en IndexedDB */
+    const ov=document.getElementById('scanOv');ov.classList.add('on');
+    document.getElementById('scanTxt').textContent='Guardando archivos...';
+    await processFiles(files,(done,total,name)=>{
+        document.getElementById('scanProg').style.width=Math.round(done/total*100)+'%';
+        document.getElementById('scanCount').textContent=done+'/'+total+' — '+name;
+    });
+    ov.classList.remove('on');
+    document.getElementById('scanV').classList.add('hidden');
+    document.getElementById('playV').classList.remove('hidden');
+    buildPL();updateCacheTag();
+    toast(pl.length+' canciones listas');
+    if(cTrk===-1)loadTrk(0);
+    e.target.value='';
+};
+
+/* Input de directorio (fallback para navegadores sin showDirectoryPicker) */
+document.getElementById('fDir').onchange=async e=>{
+    const files=Array.from(e.target.files).filter(f=>f.type.startsWith('audio/')||/\.(mp3|wav|ogg|flac|aac|m4a|wma|opus|webm)$/i.test(f.name));
+    const ov=document.getElementById('scanOv');ov.classList.add('on');
+    document.getElementById('scanTxt').textContent='Procesando carpeta...';
+    document.getElementById('scanCount').textContent=files.length+' archivos encontrados';
+    await processFiles(files,(done,total,name)=>{
+        document.getElementById('scanProg').style.width=Math.round(done/total*100)+'%';
+        document.getElementById('scanCount').textContent=done+'/'+total+' — '+name;
+    });
+    ov.classList.remove('on');
+    if(pl.length>0){
+        document.getElementById('scanV').classList.add('hidden');
+        document.getElementById('playV').classList.remove('hidden');
+        buildPL();updateCacheTag();toast(pl.length+' canciones listas');if(cTrk===-1)loadTrk(0);
+    }else toast('No se encontraron archivos de audio');
+    e.target.value='';
+};
+
+/* Botón limpiar caché */
+document.getElementById('clrCache').onclick=async()=>{
+    if(!confirm('Borrar toda la música guardada?'))return;
+    pauseA();pl=[];cTrk=-1;aud.src='';
+    try{await clearAllTracks()}catch(e){console.warn(e)}
+    localStorage.removeItem('dl_lastTrack');
+    document.getElementById('playV').classList.add('hidden');
+    document.getElementById('scanV').classList.remove('hidden');
+    toast('Música eliminada');
+};
+
 function buildPL(){const b=document.getElementById('plL');b.innerHTML='';pl.forEach((t,i)=>{const d=document.createElement('div');d.className='pli'+(i===cTrk?' on':'');d.textContent=(i+1)+'. '+t.name;d.onclick=()=>{loadTrk(i);playA()};b.appendChild(d)})}
-function loadTrk(i){if(i<0||i>=pl.length)return;cTrk=i;aud.src=pl[i].url;document.getElementById('tNm').textContent=pl[i].name;document.getElementById('tNm').style.color='var(--text)';buildPL()}
+function loadTrk(i){if(i<0||i>=pl.length)return;cTrk=i;aud.src=pl[i].url;document.getElementById('tNm').textContent=pl[i].name;document.getElementById('tNm').style.color='var(--text)';localStorage.setItem('dl_lastTrack',pl[i].id);buildPL()}
 function playA(){aud.play().then(()=>{playing=true;document.getElementById('plI').className='fas fa-pause'}).catch(()=>toast('Error al reproducir'))}
 function pauseA(){aud.pause();playing=false;document.getElementById('plI').className='fas fa-play'}
 document.getElementById('plB').onclick=()=>{if(cTrk===-1)return;playing?pauseA():playA()};
@@ -430,15 +645,24 @@ aud.ontimeupdate=()=>{if(!aud.duration)return;document.getElementById('pFl').sty
 document.getElementById('pBar').onclick=e=>{if(!aud.duration)return;const r=e.target.getBoundingClientRect();aud.currentTime=((e.clientX-r.left)/r.width)*aud.duration};
 document.getElementById('togPL').onclick=()=>document.getElementById('plL').classList.toggle('hidden');
 
-/* ========== BARRA ========== */
+/* ============================================================
+   BARRA DE ACCIONES
+   ============================================================ */
 document.getElementById('aNav').onclick=()=>document.getElementById('sIn').focus();
-document.getElementById('aMus').onclick=()=>{if(!pl.length)fIn.click();else document.getElementById('plL').classList.toggle('hidden')};
+document.getElementById('aMus').onclick=()=>{if(!pl.length)doScan();else document.getElementById('plL').classList.toggle('hidden')};
 document.getElementById('aFS').onclick=()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen().catch(()=>{});else document.exitFullscreen()};
 document.getElementById('aTm').onclick=()=>{dk=!dk;const r=document.documentElement.style;r.setProperty('--bg',dk?'#060a13':'#e2e8f0');r.setProperty('--card',dk?'rgba(10,18,32,.88)':'rgba(255,255,255,.9)');r.setProperty('--border',dk?'rgba(0,229,255,.1)':'rgba(0,0,0,.08)');r.setProperty('--text',dk?'#e2e8f0':'#1e293b');r.setProperty('--muted',dk?'#4a5e78':'#64748b');document.getElementById('tmI').className=dk?'fas fa-moon':'fas fa-sun';setTiles();toast(dk?'Tema oscuro':'Tema claro')};
 document.getElementById('aBr').onclick=()=>{if(!window.DeviceOrientationEvent){toast('Brújula no disponible');return}toast('Brújula activada');window.addEventListener('deviceorientationabsolute',e=>{hdg=e.alpha},true)};
 
-/* ========== INICIO ========== */
-function init(){sizeS();animS();initMap();initGPS();window.addEventListener('resize',()=>{sizeS();map.invalidateSize()})}
+/* ============================================================
+   INICIO
+   ============================================================ */
+async function init(){
+    sizeS();animS();initMap();initGPS();
+    /* Cargar música guardada en IndexedDB */
+    await loadCachedMusic();
+    window.addEventListener('resize',()=>{sizeS();map.invalidateSize()});
+}
 init();
 </script>
 </body>
